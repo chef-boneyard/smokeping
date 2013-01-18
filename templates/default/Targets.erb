@@ -1,0 +1,29 @@
+# Written by Chef
+*** Targets ***
+
+probe = FPing
+
+## You have to edit and uncomment all what you want below this.
+# Please, refer to smokeping_config man page for more info
+# The given adresses aren't real to avoid DoS.
+
+menu = Top
+title = Smokeping Network Latency Grapher
+remark = Welcome to the SmokePing website of <%= node['smokeping']['site_remark_owner'] %>
+
+<% @nodes.map{|n| n["datacenter"]}.uniq.reject{|n| n.to_s == ""}.each do |datacenter| %>
++ <%= datacenter %>
+menu = <%= datacenter %>
+title = <%= datacenter %>
+
+  <% @nodes.sort{|a,b| a['fqdn'].to_s <=> b['fqdn'].to_s}.each do |node| %>
+    <% if node["fqdn"] && node["datacenter"] == datacenter %>
+  ++ <%= node["fqdn"].gsub('.','_') %>
+  host = <%= node["fqdn"] %>
+
+    <% end %>
+  <% end %>
+
+
+
+<% end %>

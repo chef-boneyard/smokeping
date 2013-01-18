@@ -1,0 +1,14 @@
+*** General ***
+
+@include /etc/smokeping/config.d/pathnames
+
+# Please edit this to suit your installation
+owner    = <%= node['smokeping']['admin_name'] %>
+contact  = <%= node['smokeping']['admin_email'] %>
+cgiurl   = http://put_here_your_domain/cgi-bin/smokeping.cgi
+mailhost = <%= node['smokeping']['smtp_host'] %>
+# specify this to get syslog logging
+syslogfacility = <%= node['smokeping']['syslog_facility'] %>
+# each probe is now run in its own process
+# disable this to revert to the old behaviour
+# concurrentprobes = no
