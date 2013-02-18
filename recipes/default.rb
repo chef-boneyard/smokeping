@@ -27,7 +27,7 @@ include_recipe "apache2::mod_rewrite"
 end
 
 service "smokeping" do
-  supports :status => true, :restart => true
+  supports :status => true, :start => true, :stop => true, :restart => true
   action [ :enable, :start ]
 end
 
