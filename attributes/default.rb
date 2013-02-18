@@ -20,6 +20,7 @@
 default['smokeping']['site_remark_owner'] = "Some Company"
 default['smokeping']['admin_name']  = nil
 default['smokeping']['admin_email']  = nil
+default['smokeping']['alert_email']  = nil
 
 default['smokeping']['server_name']  = "smokeping"
 default['smokeping']['server_alias'] = nil
