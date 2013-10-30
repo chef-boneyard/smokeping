@@ -28,7 +28,7 @@ end
 
 service 'smokeping' do
   supports status: true, start: true, stop: true, restart: true
-  action [ :enable, :start ]
+  action [:enable, :start]
 end
 
 # delete the package provided apache config
