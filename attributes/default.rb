@@ -17,15 +17,15 @@
 # limitations under the License.
 #
 
-default['smokeping']['site_remark_owner'] = "Some Company"
+default['smokeping']['site_remark_owner'] = 'Some Company'
 default['smokeping']['admin_name']  = nil
 default['smokeping']['admin_email']  = nil
 default['smokeping']['alert_email']  = nil
 
-default['smokeping']['server_name']  = "smokeping"
+default['smokeping']['server_name']  = 'smokeping'
 default['smokeping']['server_alias'] = nil
 default['smokeping']['port']  = 80
 
 default['smokeping']['smtp_host']  = nil
 
-default['smokeping']['syslog_facility'] = "local0"
+default['smokeping']['syslog_facility'] = 'local0'
