@@ -20,7 +20,7 @@ include_recipe 'perl'
 include_recipe 'apache2'
 include_recipe 'apache2::mod_rewrite'
 
-%w{fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl }.each do |pkg|
+%w(fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl).each do |pkg|
   package pkg do
     action :install
   end
@@ -39,7 +39,7 @@ end
 # find the other smokeping servers
 servers = search(:node, 'recipes:smokeping*')
 
-%w{General Targets Alerts}.each do |config|
+%w(General Targets Alerts).each do |config|
   template "/etc/smokeping/config.d/#{config}" do
     source "#{config}.erb"
     mode 00644
