@@ -11,11 +11,15 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: ubuntu-10.04
 
 suites:
   - name: default
     run_list: 
     - apt::default
-    - smokeping_test::default
+    - smokeping::default
     attributes:
+      smokeping:
+        admin_name: "Admin_Name"
+        admin_email: "ExampleAdminEmail@Admin.com"
+        alert_email: "ExampleAlertEmail@Alert.com"
