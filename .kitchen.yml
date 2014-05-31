@@ -1,0 +1,25 @@
+---
+driver:
+  name: vagrant
+
+driver_config:
+   network:
+   - ["forwarded_port", {guest: 80, host: 8080}]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-10.04
+
+suites:
+  - name: default
+    run_list: 
+    - apt::default
+    - smokeping::default
+    attributes:
+      smokeping:
+        admin_name: "Admin_Name"
+        admin_email: "ExampleAdminEmail@Admin.com"
+        alert_email: "ExampleAlertEmail@Alert.com"
