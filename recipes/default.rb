@@ -20,7 +20,7 @@ include_recipe 'perl'
 include_recipe 'apache2'
 include_recipe 'apache2::mod_rewrite'
 
-%w(fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl sendmail).each do |pkg|
+%w(fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl sendmail rrdtool).each do |pkg|
   package pkg do
     action :install
   end
