@@ -1,5 +1,6 @@
-# Description
-
+Smokeping Cookbook
+=================
+[![Build Status](https://travis-ci.org/tas50/smokeping-chef.svg?branch=master)](https://travis-ci.org/tas50/smokeping-chef)
 
 Installs and configures the SmokePing server and fping service
 
@@ -9,16 +10,19 @@ http://oss.oetiker.ch/smokeping/
 fping
 http://fping.sourceforge.net/
 
-# Requirements
+Requirements
+============
 
-
+### Platform
 * Ubuntu 10.04 / Ubuntu 12.04
 * Debian
+
+### Chef Cookbooks
 * Apache cookbook
 * Perl cookbook
 
-# Attributes
-
+Attributes
+==========
 ```ruby
 default['smokeping']['site_remark_owner'] = 'Some Company'
 default['smokeping']['admin_name']  = '<admin name>'
@@ -27,8 +31,8 @@ default['smokeping']['alert_email']  = '<alert email>'
 ```
 
 
-# Usage
-
+Usage
+=====
 Apply the recipe to a the nodes runlist and run Chef
 
 ## Hardcoding Targets
