@@ -26,11 +26,6 @@ include_recipe 'apache2::mod_rewrite'
   end
 end
 
-service 'smokeping' do
-  supports :status => true, :restart => true, :reload => true
-  action [:enable, :start]
-end
-
 # delete the package provided apache config
 file '/etc/smokeping/apache2.config' do
   action :delete
@@ -48,6 +43,11 @@ servers = search(:node, 'recipes:smokeping*')
     )
     notifies :restart, 'service[smokeping]'
   end
+end
+
+service 'smokeping' do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start]
 end
 
 template '/etc/apache2/sites-available/smokeping' do
