@@ -39,7 +39,8 @@ servers = search(:node, 'recipes:smokeping*')
     source "#{config}.erb"
     mode '0644'
     variables(
-      :nodes => servers
+      :nodes => servers,
+      :alerts => node['smokeping']['alerts']
     )
     notifies :restart, 'service[smokeping]'
   end

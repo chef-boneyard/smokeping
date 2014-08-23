@@ -1,27 +1,10 @@
 *** Alerts ***
 to = <%= node['smokeping']['admin_email'] %>
 from = <%= node['smokeping']['admin_email'] %>
+<%- @alerts.each do |alert| -%>
 
-+bigloss
-type = loss
-# in percent
-pattern = ==0%,==0%,==0%,==0%,>0%,>0%,>0%
-comment = suddenly there is packet loss
-
-+someloss
-type = loss
-# in percent
-pattern = >0%,*12*,>0%,*12*,>0%
-comment = loss 3 times  in a row
-
-+startloss
-type = loss
-# in percent
-pattern = ==S,>0%,>0%,>0%
-comment = loss at startup
-
-+rttdetect
-type = rtt
-# in milli seconds
-pattern = <10,<10,<10,<10,<10,<100,>100,>100,>100
-comment = routing messed up again ?
++<%= alert['name'] -%>
+type = <%= alert['type'] -%>
+pattern = <%= alert['pattern'] -%>
+comment = <%= alert['comment'] -%>
+<%- end -%>
