@@ -1,6 +1,6 @@
 Smokeping Cookbook
 =================
-[![Build Status](https://travis-ci.org/tas50/smokeping-chef.svg?branch=master)](https://travis-ci.org/tas50/smokeping-chef)
+[![Build Status](https://travis-ci.org/tas50/chef-smokeping.svg?branch=master)](https://travis-ci.org/tas50/chef-smokeping)
 
 Installs and configures the SmokePing server and fping service
 
