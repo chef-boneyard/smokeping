@@ -13,7 +13,7 @@ menu = <%= environment %>
 title = <%= environment %>
 
   <% @nodes.sort{|a,b| a['fqdn'].to_s <=> b['fqdn'].to_s}.each do |node| %>
-    <% if node["fqdn"] && node.chef_environment == chef_environment %>
+    <% if node.chef_environment == chef_environment %>
   ++ <%= node["fqdn"].gsub('.','_') %>
   host = <%= node["fqdn"] %>
 
