@@ -3,7 +3,7 @@ maintainer       'Limelight Networks, Inc.'
 maintainer_email 'tsmith@limelight.com'
 license          'Apache 2.0'
 description      'Installs and configures SmokePing server with fping'
-version          '0.4.0'
+version          '1.0.0'
 
 depends 'apache2'
 depends 'perl'
