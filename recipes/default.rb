@@ -37,7 +37,7 @@ servers = search(:node, 'recipes:smokeping*')
 %w(General Targets Alerts).each do |config|
   template "/etc/smokeping/config.d/#{config}" do
     source "#{config}.erb"
-    mode 00644
+    mode '0644'
     variables(
       nodes: servers
     )
@@ -52,7 +52,7 @@ end
 
 template '/etc/apache2/sites-available/smokeping' do
   source 'apache2.erb'
-  mode 00644
+  mode '0644'
   notifies :reload, 'service[apache2]'
 end
 
