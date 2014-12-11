@@ -16,8 +16,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe 'apache2'
+include_recipe 'apache2::mod_rewrite'
 
-include_recipe "smokeping::_packages"
-include_recipe "smokeping::_apache"
-include_recipe "smokeping::master"
+file '/etc/smokeping/apache2.config' do
+  action :delete
+end
 
+template '/etc/apache2/sites-available/smokeping' do
+  source 'apache2.erb'
+  mode '0644'
+  notifies :reload, 'service[apache2]'
+end
+
+apache_site 'smokeping' do
+  enable true
+end
+
+apache_site '000-default' do
+  enable false
+end

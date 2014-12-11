@@ -5,7 +5,7 @@ Smokeping Cookbook
 Installs and configures the SmokePing server and fping service
 
 SmokePing:
-http://oss.oetiker.ch/smokeping/	
+http://oss.oetiker.ch/smokeping/
 
 fping
 http://fping.sourceforge.net/
@@ -33,17 +33,28 @@ default['smokeping']['alert_email']  = '<alert email>'
 
 Usage
 =====
+
+The right way to use this cookbook is to create a new site-specific cookbook
+that look up the needed data and pass them to this cookbook via the Target
+provider.
+
+## Using the Target provider
+
+```ruby
+  # Expected data structure
+   data = {
+     "name" => "Production"
+      nodes => ["nodea", "nodeb"],
+      slaves => ["nodeb"]
+   }
+
+   smokeping_target "name" do
+   action :create
+   variables(
+      :data => data
+      )
+   end
+```
+
 Apply the recipe to a the nodes runlist and run Chef
-
-## Hardcoding Targets
-
-If you would like to add a couple machines, open up [templates/default/Targets.erb](templates/default/Targets.erb) and add something like the following before the `datacenter` parsing.
-```
-+ Public                                                                                           
-menu = Public                                                           
-title = Public
-
-++ somehost
-host = somehost.mydomain.net  
-```
 

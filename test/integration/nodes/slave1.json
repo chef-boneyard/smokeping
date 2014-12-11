@@ -1,0 +1,7 @@
+{
+  "id": "slave1",
+  "run_list": ["recipe['smokeping::slave']"],
+  "automatic": {
+    "ipaddress": "10.0.0.75"
+  }
+}

@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: smokeping
-# Recipe:: default
+# Recipe:: slave
 #
-# Copyright 2013-2014, Limelight Networks, Inc.
+# Copyright 2014, Bao Nguyen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipes 'smokeping::_packages'
 
-include_recipe "smokeping::_packages"
-include_recipe "smokeping::_apache"
-include_recipe "smokeping::master"
+# find the other smokeping servers
+servers = search(:node, 'recipes:smokeping::master*')
+secret = node['smokeping']['slave_secret']
 
+secret_path = "#{node['smokeping']['etc_dir']}/secret.txt"
+
+template secret_path do
+  source "secret.txt.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  variables(
+    :secret secret
+  )
+end

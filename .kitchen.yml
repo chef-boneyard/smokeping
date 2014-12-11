@@ -2,24 +2,37 @@
 driver:
   name: vagrant
 
-driver_config:
-   network:
-   - ["forwarded_port", {guest: 80, host: 8080}]
-
 provisioner:
   name: chef_zero
 
 platforms:
   - name: ubuntu-12.04
-  - name: ubuntu-10.04
 
 suites:
   - name: default
-    run_list: 
+    run_list:
     - apt::default
-    - smokeping::default
+    - smokeping::example
     attributes:
       smokeping:
         admin_name: "Admin_Name"
         admin_email: "ExampleAdminEmail@Admin.com"
         alert_email: "ExampleAlertEmail@Alert.com"
+  - name: master
+    run_list:
+    - apt::default
+    - smokeping::example
+    attributes:
+      smokeping:
+        master_mode: true
+        slave_secret: "read"
+        admin_name: "Admin_Name"
+        admin_email: "ExampleAdminEmail@Admin.com"
+        alert_email: "ExampleAlertEmail@Alert.com"
+  - name: slave
+    run_list:
+    - apt::default
+    - smokeping::example
+    attributes:
+      smokeping:
+        slave_mode: true

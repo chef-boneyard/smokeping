@@ -1,0 +1,22 @@
+# Written by Chef
+# Expected data structure
+# {
+#   "name" => "Production",
+#     nodes => [],
+#     slaves => []
+# }
+
+<% @data.each do |i| %>
++ <%= i['name'] %>
+menu = <%= i['name'] %>
+title = <%= i['name'] %>
+  <% if i['slaves'] %>
+slaves = <%= i['slaves'].join(" ") %>
+  <% end %>
+
+  <% i['nodes'].each do |b| %>
+++ <%= b.gsub('.','_') %>
+host = <%= b %>
+
+  <% end %>
+<% end %>
