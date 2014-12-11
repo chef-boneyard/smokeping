@@ -26,7 +26,7 @@ default['smokeping']['server_name']  = 'smokeping'
 default['smokeping']['server_alias'] = nil
 default['smokeping']['port']  = 80
 default['smokeping']['targets']  = nil
-default['smokeping']['etc_dir']  = "/etc/smokeping"
+default['smokeping']['etc_dir']  = '/etc/smokeping'
 
 default['smokeping']['master_mode'] = false
 default['smokeping']['slave_mode'] = false

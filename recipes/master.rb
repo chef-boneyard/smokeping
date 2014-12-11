@@ -17,15 +17,18 @@
 # limitations under the License.
 
 etc_dir = node['smokeping']['etc_dir']
-secret_path = "#{etc_dir}/slavesecrets.conf"
+secret_path = "#{etc_dir}/smokeping_secrets"
 secret = node['smokeping']['slave_secret']
 
 if node['smokeping']['master_mode']
   # Will not support Chef Solo, use Chef Zero instead
   #slaves = search(:node, 'recipes:smokeping::slave*')
-  slaves = search(:node, 'name:slave1')
-  template "#{etc_dir}/config.d/Slave" do
-    source "Slave.erb"
+  slaves = search(:node, 'name:slave*')
+  Chef::Log.info ("Slaves: #{slaves}")
+  Chef::Log.info ("Slaves: #{slaves.first}")
+  Chef::Log.info ("Slaves: #{slaves.first.name}")
+  template "#{etc_dir}/config.d/Slaves" do
+    source "Slaves.erb"
     mode "0644"
     variables(
       :slaves => slaves
@@ -34,14 +37,16 @@ if node['smokeping']['master_mode']
 
   # merge the slaves list with a single secret
   # get an Array of fqdn, merge each item with a secret and return a hash
-  slavesecrets = slaves.map{|n| n['fqdn']}.reduce({}){|n| n.merge({n => secret})}
+  slavesecrets = slaves.reduce({}){|acc,n| acc.merge({n.name => secret})}
+  Chef::Log.info ("Slave secrets: #{slavesecrets}")
+  Chef::Log.info ("Slave secret path: #{secret_path}")
 
   template secret_path do
-    source "slavesecrets.conf.erb"
+    source "smokeping_secrets.erb"
     mode "0644"
     variables(
       :secrets => slavesecrets,
-      :secret_path => secret_path
+      :path => secret_path
     )
   end
 end
