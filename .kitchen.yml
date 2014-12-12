@@ -16,8 +16,8 @@ suites:
     attributes:
       smokeping:
         admin_name: "Admin_Name"
-        admin_email: "ExampleAdminEmail@Admin.com"
-        alert_email: "ExampleAlertEmail@Alert.com"
+        admin_email: "ExampleAdminEmail@localhost"
+        alert_email: "ExampleAlertEmail@localhost"
   - name: master
     run_list:
     - apt::default
@@ -27,8 +27,8 @@ suites:
         master_mode: true
         slave_secret: "read"
         admin_name: "Admin_Name"
-        admin_email: "ExampleAdminEmail@Admin.com"
-        alert_email: "ExampleAlertEmail@Alert.com"
+        admin_email: "ExampleAdminEmail@localhost"
+        alert_email: "ExampleAlertEmail@localhost"
   - name: slave
     run_list:
     - apt::default

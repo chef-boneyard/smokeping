@@ -26,9 +26,9 @@ secret_path = "#{node['smokeping']['etc_dir']}/secret.txt"
 
 template secret_path do
   source "secret.txt.erb"
-  owner "root"
-  group "root"
-  mode "0644"
+  owner "smokeping"
+  group "smokeping"
+  mode "0600"
   variables(
     :secret secret
   )
