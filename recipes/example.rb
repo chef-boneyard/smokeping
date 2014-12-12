@@ -25,7 +25,7 @@ include_recipe "smokeping"
 group = [{
   "name" => "Production",
   "nodes" => ["node1","node2"],
-  "slaves" => ["node1","node2"]
+  "slaves" => ["slave1"]
 }]
 
 group.each do |i|
