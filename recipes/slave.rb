@@ -28,7 +28,7 @@ template secret_path do
   source "secret.txt.erb"
   owner "smokeping"
   group "smokeping"
-  mode "0600"
+  mode "0400"
   variables(
     :secret secret
   )

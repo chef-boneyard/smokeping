@@ -9,5 +9,5 @@ remark = Welcome to the SmokePing website of <%= node['smokeping']['site_remark_
 
 # Listing of all the groups/enviroments
 <% @targets.each do |i| %>
-@include <%= "#{node['smokeping']['etc_dir']}/#{i}" %>
+@include <%= "#{node['smokeping']['etc_dir']}/config.d/#{i}" %>
 <% end %>

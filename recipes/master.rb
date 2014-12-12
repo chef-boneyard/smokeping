@@ -43,7 +43,9 @@ if node['smokeping']['master_mode']
 
   template secret_path do
     source "smokeping_secrets.erb"
-    mode "0644"
+    mode "0400"
+    owner "smokeping"
+    group "smokeping"
     variables(
       :secrets => slavesecrets,
       :path => secret_path
