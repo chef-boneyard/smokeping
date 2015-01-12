@@ -20,12 +20,16 @@ include_recipe "smokeping"
 
 # Instead of having code for Chef Solo, use Chef Local mode instead
 # to support Search
-#servers = search(:nodes, 'recipe:smokeping::master*')
+servers = search(:node, 'recipe:smokeping*')
+slaves = search(:node, 'recipe:smokeping* AND tags:slave')
+
+servers_fqdn = servers.map{|i| i.name}
+slaves_fqdn = slaves.map{|i| i.name}
 
 group = [{
   "name" => "Production",
-  "nodes" => ["node1","node2"],
-  "slaves" => ["slave1"]
+  "nodes" => servers_fqdn,
+  "slaves" => slaves_fqdn
 }]
 
 group.each do |i|

@@ -1,0 +1,11 @@
+{
+  "id": "master",
+  "run_list": ["recipe[smokeping::master]"],
+  "automatic": {
+    "ipaddress": "10.0.0.1",
+    "tags": ["smokeping_master"]
+  },
+  "normal": {
+    "tags": ["smokeping_master"]
+  }
+}

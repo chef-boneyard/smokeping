@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: smokeping
-# Recipe:: default
+# Recipe:: example
 #
-# Copyright 2013-2014, Limelight Networks, Inc.
+# Copyright 2014, Bao Nguyen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,23 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'apache2'
-include_recipe 'apache2::mod_rewrite'
+node.set['smokepling']['slave_mode'] = true
 
-file '/etc/smokeping/apache2.config' do
-  action :delete
-end
+include_recipe "smokeping::slave"
 
-template '/etc/apache2/sites-available/smokeping.conf' do
-  source 'apache2.erb'
-  mode '0644'
-  notifies :reload, 'service[apache2]'
-end
-
-apache_site 'smokeping' do
-  enable true
-end
-
-apache_site '000-default' do
-  enable false
-end

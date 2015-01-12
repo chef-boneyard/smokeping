@@ -1,8 +1,8 @@
 {
-  "id": "slave1",
+  "id": "slave2",
   "run_list": ["recipe[smokeping::slave]"],
   "automatic": {
-    "ipaddress": "10.0.0.11",
+    "ipaddress": "10.0.0.12",
     "tags": ["smokeping_slave"]
   },
   "normal": {
