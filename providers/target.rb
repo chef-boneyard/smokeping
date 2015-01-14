@@ -56,9 +56,7 @@ action :delete do
   converge_by("Converge by #{new_resource.name}") do
     name = new_resource.name
     file = "#{node['smokeping']['etc_dir']}/#{name}.targets"
-    if File.exist?(file)
-      File.delete(file)
-    end
+    File.delete(file) if File.exist?(file)
     Chef::Log.info "#{file} deleted"
     new_resource.updated_by_last_action(true)
   end
