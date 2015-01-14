@@ -23,7 +23,7 @@ secret = node['smokeping']['slave_secret']
 if node['smokeping']['master_mode']
   # Will not support Chef Solo, use Chef Zero instead
   slaves = search(:node, 'recipe:smokeping* AND tags:smokeping_slave')
-  Chef::Log.info ("Slaves: #{slaves}")
+  Chef::Log.info("Slaves: #{slaves}")
   template "#{etc_dir}/config.d/Slaves" do
     source 'Slaves.erb'
     mode '0644'
