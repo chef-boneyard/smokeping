@@ -29,12 +29,12 @@ service 'smokeping' do
   action :nothing
 end
 
-template "smokeping" do
-  path "/etc/init.d/smokeping"
-  source "smokeping.init.erb"
-  owner "root"
-  group "root"
-  mode "0755"
-  notifies :enable, "service[smokeping]"
-  notifies :start, "service[smokeping]"
+template 'smokeping' do
+  path '/etc/init.d/smokeping'
+  source 'smokeping.init.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  notifies :enable, 'service[smokeping]'
+  notifies :start, 'service[smokeping]'
 end

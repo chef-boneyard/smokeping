@@ -25,8 +25,8 @@ if node['smokeping']['master_mode']
   slaves = search(:node, 'recipe:smokeping* AND tags:smokeping_slave')
   Chef::Log.info ("Slaves: #{slaves}")
   template "#{etc_dir}/config.d/Slaves" do
-    source "Slaves.erb"
-    mode "0644"
+    source 'Slaves.erb'
+    mode '0644'
     variables(
       :slaves => slaves
     )
@@ -34,13 +34,13 @@ if node['smokeping']['master_mode']
 
   # merge the slaves list with a single secret
   # get an Array of fqdn, merge each item with a secret and return a hash
-  slavesecrets = slaves.reduce({}){|acc,n| acc.merge({n.name => secret})}
+  slavesecrets = slaves.reduce({}) { |acc, n| acc.merge(n.name => secret) }
 
   template secret_path do
-    source "smokeping_secrets.erb"
-    mode "0400"
-    owner "smokeping"
-    group "smokeping"
+    source 'smokeping_secrets.erb'
+    mode '0400'
+    owner 'smokeping'
+    group 'smokeping'
     variables(
       :secrets => slavesecrets,
       :path => secret_path
@@ -59,4 +59,3 @@ end
     notifies :restart, 'service[smokeping]', :delayed
   end
 end
-

@@ -18,5 +18,4 @@
 
 node.set['smokepling']['slave_mode'] = true
 
-include_recipe "smokeping::slave"
-
+include_recipe 'smokeping::slave'

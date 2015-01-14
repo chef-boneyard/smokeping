@@ -16,8 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-include_recipe "smokeping::_packages"
-include_recipe "smokeping::_apache"
-include_recipe "smokeping::master"
-
+include_recipe 'smokeping::_packages'
+include_recipe 'smokeping::_apache'
+include_recipe 'smokeping::master'

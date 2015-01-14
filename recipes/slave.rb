@@ -26,10 +26,10 @@ if node['smokeping']['slave_mode']
   secret_path = "#{node['smokeping']['etc_dir']}/secret.txt"
 
   template secret_path do
-    source "secret.txt.erb"
-    owner "smokeping"
-    group "smokeping"
-    mode "0400"
+    source 'secret.txt.erb'
+    owner 'smokeping'
+    group 'smokeping'
+    mode '0400'
     variables(
       :secret => secret
     )
