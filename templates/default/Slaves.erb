@@ -1,0 +1,10 @@
+# Written by Chef
+*** Slaves ***
+secrets=<%= "#{node['smokeping']['etc_dir']}/smokeping_secrets" %>
+
+<% @slaves.each do |i| %>
++<%= i.name %>
+display_name=<%= i.name %>
+location="US"
+color=ff0000
+<% end %>

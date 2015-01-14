@@ -16,8 +16,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe 'perl'
 
-include_recipe "smokeping::_packages"
-include_recipe "smokeping::_apache"
-include_recipe "smokeping::master"
+%w(fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl sendmail rrdtool).each do |pkg|
+  package pkg do
+    action :install
+  end
+end
 
+service 'smokeping' do
+  supports :status => true, :restart => true, :reload => true
+  action :nothing
+end
+
+template "smokeping" do
+  path "/etc/init.d/smokeping"
+  source "smokeping.init.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+  notifies :enable, "service[smokeping]"
+  notifies :start, "service[smokeping]"
+end

@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: smokeping
-# Recipe:: default
+# Recipe:: example
 #
-# Copyright 2013-2014, Limelight Networks, Inc.
+# Copyright 2014, Bao Nguyen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "smokeping"
 
-include_recipe "smokeping::_packages"
-include_recipe "smokeping::_apache"
-include_recipe "smokeping::master"
+# Instead of having code for Chef Solo, use Chef Local mode instead
+# to support Search
+servers = search(:node, 'recipe:smokeping*')
+slaves = search(:node, 'recipe:smokeping* AND tags:smokeping_slave')
 
+servers_fqdn = servers.map{|i| i.name}
+slaves_fqdn = slaves.map{|i| i.name}
+
+group = [{
+  "name" => "Production",
+  "nodes" => servers_fqdn,
+  "slaves" => slaves_fqdn
+}]
+
+group.each do |i|
+  smokeping_target i['name'] do
+    action :create
+    data [i]
+  end
+end

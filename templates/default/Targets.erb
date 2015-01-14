@@ -7,17 +7,7 @@ menu = Top
 title = Smokeping Network Latency Grapher
 remark = Welcome to the SmokePing website of <%= node['smokeping']['site_remark_owner'] %>
 
-<% @nodes.map{|n| n.chef_environment}.uniq.reject{|n| n.to_s == ""}.each do |environment| %>
-+ <%= environment %>
-menu = <%= environment %>
-title = <%= environment %>
-
-  <% @nodes.sort{|a,b| a['fqdn'].to_s <=> b['fqdn'].to_s}.each do |node| %>
-    <% if node.chef_environment == chef_environment %>
-  ++ <%= node["fqdn"].gsub('.','_') %>
-  host = <%= node["fqdn"] %>
-
-    <% end %>
-  <% end %>
-
+# Listing of all the groups/enviroments
+<% @targets.each do |i| %>
+@include <%= "#{node['smokeping']['etc_dir']}/config.d/#{i}" %>
 <% end %>

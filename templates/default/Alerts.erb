@@ -3,8 +3,8 @@ to = <%= node['smokeping']['admin_email'] %>
 from = <%= node['smokeping']['admin_email'] %>
 <%- @alerts.each do |alert| -%>
 
-+<%= alert['name'] -%>
-type = <%= alert['type'] -%>
-pattern = <%= alert['pattern'] -%>
-comment = <%= alert['comment'] -%>
++<%= alert['name'] %>
+type = <%= alert['type'] %>
+pattern = <%= alert['pattern'] %>
+comment = <%= alert['comment'] %>
 <%- end -%>

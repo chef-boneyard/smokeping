@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./smokeping --master-url=http://<%= @master %>/smokeping.cgi \
+             --cache-dir=<%= @cache_dir %> \
+             --shared-secret=<%= @secret_path %>
+

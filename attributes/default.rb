@@ -25,6 +25,12 @@ default['smokeping']['alert_email']  = nil
 default['smokeping']['server_name']  = 'smokeping'
 default['smokeping']['server_alias'] = nil
 default['smokeping']['port']  = 80
+default['smokeping']['targets']  = nil
+default['smokeping']['etc_dir']  = '/etc/smokeping'
+
+default['smokeping']['master_mode'] = false
+default['smokeping']['slave_mode'] = false
+default['smokeping']['slave_secret'] = nil
 
 default['smokeping']['smtp_host']  = nil
 
