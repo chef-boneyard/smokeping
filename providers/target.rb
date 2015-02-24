@@ -23,6 +23,7 @@ action :create do
 
     file = "#{etc_dir}/config.d/#{name}.targets"
     template file do
+      cookbook 'smokeping'
       source 'group_targets.erb'
       mode '0644'
       variables(
@@ -37,6 +38,7 @@ action :create do
     file = "#{node['smokeping']['etc_dir']}/config.d/Targets"
 
     template file do
+      cookbook 'smokeping'
       source 'Targets.erb'
       owner 'root'
       group 'root'
