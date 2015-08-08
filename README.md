@@ -59,3 +59,11 @@ provider.
 
 Apply the recipe to a the nodes runlist and run Chef
 
+License and Author
+==================
+
+Author:: Tim Smith (<tsmith84@gmail.com>)
+
+Copyright:: 2013-2014, Limelight Networks, Inc.
+
+License:: Apache 2.0
