@@ -18,13 +18,13 @@
 #
 
 default['smokeping']['site_remark_owner'] = 'Some Company'
-default['smokeping']['admin_name']  = nil
+default['smokeping']['admin_name'] = nil
 default['smokeping']['admin_email']  = nil
 default['smokeping']['alert_email']  = nil
 
 default['smokeping']['server_name']  = 'smokeping'
 default['smokeping']['server_alias'] = nil
-default['smokeping']['port']  = 80
+default['smokeping']['port'] = 80
 default['smokeping']['targets']  = nil
 default['smokeping']['etc_dir']  = '/etc/smokeping'
 
@@ -32,7 +32,7 @@ default['smokeping']['master_mode'] = false
 default['smokeping']['slave_mode'] = false
 default['smokeping']['slave_secret'] = nil
 
-default['smokeping']['smtp_host']  = nil
+default['smokeping']['smtp_host'] = nil
 
 default['smokeping']['syslog_facility'] = 'local0'
 

@@ -27,7 +27,7 @@ action :create do
       source 'group_targets.erb'
       mode '0644'
       variables(
-        :data => new_resource.data
+        data: new_resource.data
       )
     end
     Chef::Log.info "#{file} created"
@@ -44,7 +44,7 @@ action :create do
       group 'root'
       mode '0644'
       variables(
-        :targets => targets
+        targets: targets
       )
       notifies :restart, 'service[smokeping]', :delayed
     end

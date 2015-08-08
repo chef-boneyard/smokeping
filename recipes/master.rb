@@ -28,7 +28,7 @@ if node['smokeping']['master_mode']
     source 'Slaves.erb'
     mode '0644'
     variables(
-      :slaves => slaves
+      slaves: slaves
     )
   end
 
@@ -42,8 +42,8 @@ if node['smokeping']['master_mode']
     owner 'smokeping'
     group 'smokeping'
     variables(
-      :secrets => slavesecrets,
-      :path => secret_path
+      secrets: slavesecrets,
+      path: secret_path
     )
   end
   tag('smokeping_master')
@@ -54,7 +54,7 @@ end
     source "#{config}.erb"
     mode '0644'
     variables(
-      :alerts => node['smokeping']['alerts']
+      alerts: node['smokeping']['alerts']
     )
     notifies :restart, 'service[smokeping]', :delayed
   end

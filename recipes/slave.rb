@@ -31,7 +31,7 @@ if node['smokeping']['slave_mode']
     group 'smokeping'
     mode '0400'
     variables(
-      :secret => secret
+      secret: secret
     )
   end
   tag('smokeping_slave')
