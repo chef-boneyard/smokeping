@@ -1,6 +1,7 @@
 Smokeping Cookbook
 =================
 [![Build Status](https://travis-ci.org/tas50/chef-smokeping.svg?branch=master)](https://travis-ci.org/tas50/chef-smokeping)
+[![Cookbook Version](https://img.shields.io/cookbook/v/smokeping.svg)](https://supermarket.chef.io/cookbooks/smokeping)
 
 Installs and configures the SmokePing server and fping service
 
