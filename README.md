@@ -9,7 +9,7 @@ SmokePing:
 http://oss.oetiker.ch/smokeping/
 
 fping
-http://fping.sourceforge.net/
+http://fping.org/
 
 Requirements
 ============
