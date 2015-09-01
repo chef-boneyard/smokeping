@@ -3,7 +3,7 @@ maintainer 'Tim Smith'
 maintainer_email 'tsmith84@gmail.com'
 license 'Apache 2.0'
 description 'Installs and configures SmokePing server with fping'
-version '1.1.4'
+version '1.1.6'
 
 depends 'apache2'
 depends 'perl'
