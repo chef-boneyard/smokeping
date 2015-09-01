@@ -11,3 +11,6 @@ depends 'perl'
 %w(debian ubuntu).each do |os|
   supports os
 end
+
+source_url 'https://github.com/tas50/chef-smokeping' if respond_to?(:source_url)
+issues_url 'https://github.com/tas50/chef-smokeping/issues' if respond_to?(:issues_url)
