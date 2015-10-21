@@ -19,20 +19,34 @@
 include_recipe 'apache2'
 include_recipe 'apache2::mod_rewrite'
 
-file '/etc/smokeping/apache2.config' do
-  action :delete
-end
+if node['platform'] == 'ubuntu' && node ['platform_version'] == '14.04'
 
-template '/etc/apache2/sites-available/smokeping.conf' do
-  source 'apache2.erb'
-  mode '0644'
-  notifies :reload, 'service[apache2]'
-end
+  # Link in the smokeping apache config and enable config and mod_cgi
+  bash 'apache_config' do
+    code <<-EOH
+      ln -s /etc/smokeping/apache2.conf /etc/apache2/conf-available/smokeping.conf
+      a2enconf smokeping
+      a2enmod cgid
+      service apache2 reload
+      service apache2 restart
+      EOH
+    end
+else
+  file '/etc/smokeping/apache2.config' do
+    action :delete
+  end
 
-apache_site 'smokeping' do
-  enable true
-end
+  template '/etc/apache2/sites-available/smokeping.conf' do
+    source 'apache2.erb'
+    mode '0644'
+    notifies :reload, 'service[apache2]'
+  end
 
-apache_site '000-default' do
-  enable false
+  apache_site 'smokeping' do
+    enable true
+  end
+
+  apache_site '000-default' do
+    enable false
+  end
 end
