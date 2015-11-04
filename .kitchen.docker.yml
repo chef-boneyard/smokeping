@@ -1,0 +1,47 @@
+settings:
+  parallel: true
+
+driver:
+  name: docker
+  # privileged is required otherwise the container doesn't boot right
+  privileged: true
+
+platforms:
+- name: ubuntu-12.04
+  driver:
+    image: ubuntu-upstart:12.04
+    platform: ubuntu
+    disable_upstart: false
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install apt-transport-https net-tools -y
+
+suites:
+  - name: default
+    run_list:
+    - apt::default
+    - smokeping::example
+    attributes:
+      smokeping:
+        admin_name: "Admin_Name"
+        admin_email: "ExampleAdminEmail@localhost"
+        alert_email: "ExampleAlertEmail@localhost"
+  - name: master
+    run_list:
+    - apt::default
+    - smokeping::example_master
+    attributes:
+      smokeping:
+        master_mode: true
+        slave_secret: "read"
+        admin_name: "Admin_Name"
+        admin_email: "ExampleAdminEmail@localhost"
+        alert_email: "ExampleAlertEmail@localhost"
+  - name: slave
+    run_list:
+    - apt::default
+    - smokeping::example_slave
+    attributes:
+      smokeping:
+        slave_mode: true
