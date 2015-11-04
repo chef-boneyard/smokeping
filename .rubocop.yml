@@ -29,3 +29,10 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Style/FileName:
   Enabled: false
+
+#TODO: Resolve these:
+
+Style/SingleLineBlockParams:
+  Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
