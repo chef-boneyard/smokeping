@@ -1,7 +1,7 @@
 Smokeping Cookbook
 =================
 
-[![Build Status](https://travis-ci.org/tas50/chef-smokeping.svg?branch=master)](https://travis-ci.org/tas50/chef-smokeping)
+[![Build Status](https://travis-ci.org/chef-cookbooks/smokeping.svg?branch=master)](https://travis-ci.org/chef-cookbooks/smokeping)
 [![Cookbook Version](https://img.shields.io/cookbook/v/smokeping.svg)](https://supermarket.chef.io/cookbooks/smokeping)
 
 Installs and configures the SmokePing server and fping service
@@ -65,9 +65,10 @@ Apply the recipe to a the nodes runlist and run Chef
 License & Authors
 -----------------
 
-**Author:** Tim Smith (<tsmith84@gmail.com>)
+**Author:** Tim Smith (<tsmith@chef.io>)
 
 **Copyright:** 2013-2015, Limelight Networks, Inc.
+**Copyright:** 2016, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
