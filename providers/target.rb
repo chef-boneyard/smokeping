@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+use_inline_resources
+
 action :create do
   converge_by("Converging by #{new_resource.name}") do
     name = new_resource.name
