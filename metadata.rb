@@ -1,6 +1,6 @@
 name 'smokeping'
-maintainer 'Tim Smith'
-maintainer_email 'tsmith84@gmail.com'
+maintainer 'Chef Software, Inc.'
+maintainer_email 'cookbooks@chef.io'
 license 'Apache 2.0'
 description 'Installs and configures SmokePing server with fping'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
@@ -13,5 +13,5 @@ depends 'perl'
   supports os
 end
 
-source_url 'https://github.com/tas50/chef-smokeping' if respond_to?(:source_url)
-issues_url 'https://github.com/tas50/chef-smokeping/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/smokeping' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-cookbooks/smokeping/issues' if respond_to?(:issues_url)
