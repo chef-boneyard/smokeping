@@ -8,12 +8,14 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
 
 suites:
   - name: default
     run_list:
     - apt::default
-    - smokeping::example
+    - smokeping::default
     attributes:
       smokeping:
         admin_name: "Admin_Name"
