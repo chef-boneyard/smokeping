@@ -23,7 +23,7 @@ file '/etc/smokeping/apache2.config' do
   action :delete
 end
 
-template '/etc/apache2/sites-available/smokeping.conf' do
+template "#{node['apache']['dir']}/sites-available/smokeping.conf" do
   source 'apache2.erb'
   mode '0644'
   notifies :reload, 'service[apache2]'
