@@ -8,13 +8,26 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
+    run_list:
+    - apt::default
   - name: ubuntu-14.04
+    run_list:
+    - apt::default
   - name: ubuntu-16.04
+    run_list:
+    - apt::default
+  - name: centos-7.2
+    run_list:
+    - yum-epel::default
+    attributes:
+      yum:
+        epel-testing:
+          enabled: true
+          managed: true
 
 suites:
   - name: default
     run_list:
-    - apt::default
     - smokeping::default
     attributes:
       smokeping:
@@ -23,7 +36,6 @@ suites:
         alert_email: "ExampleAlertEmail@localhost"
   - name: master
     run_list:
-    - apt::default
     - smokeping::example_master
     attributes:
       smokeping:
@@ -34,7 +46,6 @@ suites:
         alert_email: "ExampleAlertEmail@localhost"
   - name: slave
     run_list:
-    - apt::default
     - smokeping::example_slave
     attributes:
       smokeping:
