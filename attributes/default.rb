@@ -36,6 +36,10 @@ default['smokeping']['smtp_host'] = nil
 
 default['smokeping']['syslog_facility'] = 'local0'
 
+# The name of the account the package creates for the smokeping daemon, or 'root'.
+default['smokeping']['daemon_user'] = 'smokeping'
+default['smokeping']['daemon_group'] = 'smokeping'
+
 default['smokeping']['alerts'] = [
   {
     'name' => 'bigloss',

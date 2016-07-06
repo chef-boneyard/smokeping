@@ -24,6 +24,9 @@ platforms:
         epel-testing:
           enabled: true
           managed: true
+      smokeping:
+        daemon_user: root
+        daemon_group: root
 
 suites:
   - name: default
