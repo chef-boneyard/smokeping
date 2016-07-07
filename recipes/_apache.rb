@@ -17,6 +17,7 @@
 # limitations under the License.
 
 include_recipe 'apache2'
+include_recipe 'apache2::mod_cgi'
 include_recipe 'apache2::mod_rewrite'
 
 file '/etc/smokeping/apache2.config' do
