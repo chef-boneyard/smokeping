@@ -36,9 +36,20 @@ default['smokeping']['smtp_host'] = nil
 
 default['smokeping']['syslog_facility'] = 'local0'
 
-# The name of the account the package creates for the smokeping daemon, or 'root'.
-default['smokeping']['daemon_user'] = 'smokeping'
-default['smokeping']['daemon_group'] = 'smokeping'
+case node['platform_family']
+when 'rhel'
+  default['smokeping']['daemon_user'] = 'root'
+  default['smokeping']['daemon_group'] = 'root'
+  default['smokeping']['webroot'] = '/usr/share/smokeping/htdocs'
+  default['smokeping']['images'] = '/var/lib/smokeping/images'
+  default['smokeping']['cgi'] = '/usr/share/smokeping/cgi/smokeping.fcgi'
+else
+  default['smokeping']['daemon_user'] = 'smokeping'
+  default['smokeping']['daemon_group'] = 'smokeping'
+  default['smokeping']['webroot'] = '/usr/share/smokeping/www'
+  default['smokeping']['images'] = '/usr/share/smokeping/www/images'
+  default['smokeping']['cgi'] = '/usr/lib/cgi-bin/smokeping.cgi'
+end
 
 default['smokeping']['alerts'] = [
   {
