@@ -6,17 +6,17 @@
   ServerName      <%= node['smokeping']['server_name'] %>
   <% if node['smokeping']['server_alias'] %>ServerAlias     <%= node['smokeping']['server_alias'] %><% end %>
 
-  DocumentRoot /var/www
+  DocumentRoot <%= node['smokeping']['webroot'] %>
 
   RewriteEngine on
   RewriteCond %{REQUEST_URI} !^/smokeping/.+
   RewriteCond %{REQUEST_URI} !^/smokeping\.cgi
   RewriteRule ^(.*)$ /smokeping.cgi [R=301]
 
-  Alias /smokeping/images <%= node['smokeping']['images'] %>
+  Alias /smokeping/images <%= node['smokeping']['imgcache'] %>
   Alias /smokeping <%= node['smokeping']['webroot'] %>
 
-  <Directory "<%= node['smokeping']['images'] %>">
+  <Directory "<%= node['smokeping']['imgcache'] %>">
       Options FollowSymLinks
       <%if node['apache']['version'].to_f >= 2.4 %>
       Require all granted

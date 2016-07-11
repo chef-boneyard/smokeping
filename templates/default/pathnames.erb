@@ -1,0 +1,7 @@
+sendmail = /usr/sbin/sendmail
+imgcache = <%= node['smokeping']['imgcache'] %>
+imgurl   = ../smokeping/images
+datadir  = <%= node['smokeping']['datadir'] %>
+piddir  = /var/run/smokeping
+smokemail = <%= node['smokeping']['etc_dir'] %>/smokemail
+tmail = <%= node['smokeping']['etc_dir'] %>/tmail

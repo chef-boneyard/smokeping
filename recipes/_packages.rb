@@ -31,7 +31,7 @@ when 'debian'
     action :nothing
   end
 
-  template 'smokeping' do
+  template 'smokeping init.d' do
     path '/etc/init.d/smokeping'
     source 'smokeping.init.erb'
     owner 'root'
@@ -56,4 +56,40 @@ else
     mode 0755
     action :create
   end
+end
+
+template "#{node['smokeping']['etc_dir']}/config" do
+  source 'config.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :reload, 'service[smokeping]'
+end
+
+%w(pathnames Database Presentation Probes).each do |configdfile|
+  template "#{node['smokeping']['etc_dir']}/config.d/#{configdfile}" do
+    source "#{configdfile}.erb"
+    owner 'root'
+    group 'root'
+    mode 0644
+    notifies :reload, 'service[smokeping]'
+  end
+end
+
+# Create empty Target and Slave list files to prevent smokeping from failing to start on initial converge
+file "#{node['smokeping']['etc_dir']}/config.d/Targets" do
+  action :create_if_missing
+  content '*** Targets ***'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :reload, 'service[smokeping]'
+end
+
+file "#{node['smokeping']['etc_dir']}/config.d/Slaves" do
+  action :create_if_missing
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :reload, 'service[smokeping]'
 end
