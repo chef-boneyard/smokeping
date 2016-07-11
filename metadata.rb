@@ -9,7 +9,7 @@ version '1.1.6'
 depends 'apache2'
 depends 'perl'
 
-%w(debian ubuntu).each do |os|
+%w(centos debian redhat ubuntu).each do |os|
   supports os
 end
 

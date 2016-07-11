@@ -36,6 +36,25 @@ default['smokeping']['smtp_host'] = nil
 
 default['smokeping']['syslog_facility'] = 'local0'
 
+case node['platform_family']
+when 'rhel'
+  default['smokeping']['daemon_user'] = 'root'
+  default['smokeping']['daemon_group'] = 'root'
+  default['smokeping']['webroot'] = '/usr/share/smokeping/htdocs'
+  default['smokeping']['imgcache'] = '/var/lib/smokeping/images'
+  default['smokeping']['datadir'] = '/var/lib/smokeping/rrd'
+  default['smokeping']['cgi'] = '/usr/share/smokeping/cgi/smokeping.fcgi'
+  default['smokeping']['fping_path'] = '/sbin/fping'
+else
+  default['smokeping']['daemon_user'] = 'smokeping'
+  default['smokeping']['daemon_group'] = 'smokeping'
+  default['smokeping']['webroot'] = '/usr/share/smokeping/www'
+  default['smokeping']['imgcache'] = '/usr/share/smokeping/www/images'
+  default['smokeping']['datadir'] = '/var/lib/smokeping'
+  default['smokeping']['cgi'] = '/usr/lib/cgi-bin/smokeping.cgi'
+  default['smokeping']['fping_path'] = '/usr/bin/fping'
+end
+
 default['smokeping']['alerts'] = [
   {
     'name' => 'bigloss',

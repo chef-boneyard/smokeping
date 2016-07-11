@@ -27,8 +27,8 @@ if node['smokeping']['slave_mode']
 
   template secret_path do
     source 'secret.txt.erb'
-    owner 'smokeping'
-    group 'smokeping'
+    owner node['smokeping']['daemon_user']
+    group node['smokeping']['daemon_group']
     mode '0400'
     variables(
       secret: secret

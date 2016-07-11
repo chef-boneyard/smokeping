@@ -17,6 +17,7 @@ Requirements
 ------------
 #### Platforms
 - Debian/Ubuntu
+- CentOS/RHEL 7.0+
 
 #### Chef
 - Chef 11+
@@ -61,6 +62,9 @@ provider.
 ```
 
 Apply the recipe to a the nodes runlist and run Chef
+
+For CentOS/RHEL support, epel or epel-testing repositories must be enabled.
+See yum-epel cookbook.
 
 License & Authors
 -----------------

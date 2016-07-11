@@ -6,15 +6,27 @@
   ServerName      <%= node['smokeping']['server_name'] %>
   <% if node['smokeping']['server_alias'] %>ServerAlias     <%= node['smokeping']['server_alias'] %><% end %>
 
-  DocumentRoot /var/www
+  DocumentRoot <%= node['smokeping']['webroot'] %>
 
   RewriteEngine on
-  RewriteCond %{REQUEST_URI} !smokeping\.cgi
-  RewriteCond %{REQUEST_URI} !images
+  RewriteCond %{REQUEST_URI} !^/smokeping/.+
+  RewriteCond %{REQUEST_URI} !^/smokeping\.cgi
   RewriteRule ^(.*)$ /smokeping.cgi [R=301]
 
-  Alias /smokeping /usr/share/smokeping/www
-  <Directory "/usr/share/smokeping/www">
+  Alias /smokeping/images <%= node['smokeping']['imgcache'] %>
+  Alias /smokeping <%= node['smokeping']['webroot'] %>
+
+  <Directory "<%= node['smokeping']['imgcache'] %>">
+      Options FollowSymLinks
+      <%if node['apache']['version'].to_f >= 2.4 %>
+      Require all granted
+      <% else %>
+      Order allow,deny
+      Allow from all
+      <% end %>
+  </Directory>
+
+  <Directory "<%= node['smokeping']['webroot'] %>">
       Options FollowSymLinks
   </Directory>
 
@@ -22,12 +34,16 @@
     AuthName "Smokeping Server"
   </Location>
 
-  ScriptAlias / /usr/lib/cgi-bin/
-  <Directory "/usr/lib/cgi-bin">
+  ScriptAlias /smokeping.cgi <%= node['smokeping']['cgi'] %>
+  <Directory "<%= File.dirname(node['smokeping']['cgi']) %>">
     AllowOverride None
-    Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
+    Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+    <%if node['apache']['version'].to_f >= 2.4 %>
+    Require all granted
+    <% else %>
     Order allow,deny
     Allow from all
+    <% end %>
   </Directory>
 
 </VirtualHost>
