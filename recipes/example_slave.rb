@@ -16,6 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.set['smokepling']['slave_mode'] = true
+node.normal['smokepling']['slave_mode'] = true
 
 include_recipe 'smokeping::slave'
