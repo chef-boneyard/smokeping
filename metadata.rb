@@ -13,5 +13,6 @@ depends 'perl'
   supports os
 end
 
-source_url 'https://github.com/chef-cookbooks/smokeping' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/smokeping/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/smokeping'
+issues_url 'https://github.com/chef-cookbooks/smokeping/issues'
+chef_version '>= 12.1'
