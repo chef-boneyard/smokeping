@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'default installation' do
-  let(:runner) { ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') }
+  cached(:runner) { ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') }
   let(:chef_run) { runner.converge('smokeping::default') }
 
   before do
@@ -9,19 +9,7 @@ describe 'default installation' do
   end
 
   it 'installs packages' do
-    expect(chef_run).to install_package 'smokeping'
-    expect(chef_run).to install_package 'fping'
-    expect(chef_run).to install_package 'curl'
-    expect(chef_run).to install_package 'fping'
-    expect(chef_run).to install_package 'libauthen-radius-perl'
-    expect(chef_run).to install_package 'libnet-ldap-perl'
-    expect(chef_run).to install_package 'libnet-dns-perl'
-    expect(chef_run).to install_package 'libio-socket-ssl-perl'
-    expect(chef_run).to install_package 'libnet-telnet-perl'
-    expect(chef_run).to install_package 'libsocket6-perl'
-    expect(chef_run).to install_package 'libio-socket-inet6-perl'
-    expect(chef_run).to install_package 'sendmail'
-    expect(chef_run).to install_package 'rrdtool'
+    expect(chef_run).to install_package(%w(fping smokeping curl libauthen-radius-perl libnet-ldap-perl libnet-dns-perl libio-socket-ssl-perl libnet-telnet-perl libsocket6-perl libio-socket-inet6-perl sendmail rrdtool))
   end
 
   it 'includes apache2 recipe' do
