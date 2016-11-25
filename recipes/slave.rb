@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: smokeping
+# Cookbook:: smokeping
 # Recipe:: slave
 #
-# Copyright 2014, Bao Nguyen
+# Copyright:: 2014-2016, Bao Nguyen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
