@@ -41,24 +41,24 @@ default['smokeping']['alerts'] = [
     'name' => 'bigloss',
     'type' => 'loss',
     'pattern' => '==0%,==0%,==0%,==0%,>0%,>0%,>0%',
-    'comment' => 'suddenly there is packet loss'
+    'comment' => 'suddenly there is packet loss',
   },
   {
     'name' => 'someloss',
     'type' => 'loss',
     'pattern' => '>0%,*12*,>0%,*12*,>0%',
-    'comment' => 'loss 3 times  in a row'
+    'comment' => 'loss 3 times  in a row',
   },
   {
     'name' => 'startloss',
     'type' => 'loss',
     'pattern' => '==S,>0%,>0%,>0%',
-    'comment' => 'loss at startup'
+    'comment' => 'loss at startup',
   },
   {
     'name' => 'rttdetect',
     'type' => 'rtt',
     'pattern' => '<10,<10,<10,<10,<10,<100,>100,>100,>100',
-    'comment' => 'routing messed up again ?'
-  }
+    'comment' => 'routing messed up again ?',
+  },
 ]

@@ -29,7 +29,7 @@ slaves_fqdn = slaves.map(&:name)
 group = [{
   'name' => 'Production',
   'nodes' => servers_fqdn,
-  'slaves' => slaves_fqdn
+  'slaves' => slaves_fqdn,
 }]
 
 group.each do |i|
