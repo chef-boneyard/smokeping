@@ -2,6 +2,11 @@ smokeping Cookbook CHANGELOG
 ============================
 This file is used to list changes made in each version of the smokeping cookbook.
 
+## 3.0.0 (2017-02-16)
+
+- Convert target LWRP to a custom resource
+- Move testing to an actual testing recipe and updates chefspec testing
+
 ## 2.0.0 (2016-09-16)
 - Run test kitchen tests in Travis with docker
 - Add Rakefile for simplified testing and use cookstyle not rubocop
