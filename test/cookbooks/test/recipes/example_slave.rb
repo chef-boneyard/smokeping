@@ -1,6 +1,6 @@
 #
-# Cookbook:: smokeping
-# Recipe:: example
+# Cookbook:: test
+# Recipe:: example_slave
 #
 # Copyright:: 2014-2016, Bao Nguyen
 #
@@ -18,4 +18,5 @@
 
 node.normal['smokepling']['slave_mode'] = true
 
+apt_update 'update'
 include_recipe 'smokeping::slave'
