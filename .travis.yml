@@ -20,8 +20,6 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=master-ubuntu-1204
-  - INSTANCE=slave-ubuntu-1204
   - INSTANCE=master-ubuntu-1404
   - INSTANCE=slave-ubuntu-1404
   - INSTANCE=master-ubuntu-1604
