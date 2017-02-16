@@ -1,41 +1,21 @@
 driver:
   name: vagrant
-  network:
-  - ["forwarded_port", {guest: 80, host: 8081}]
 
 provisioner:
   name: chef_zero
+  deprecations_as_errors: true
 
 platforms:
-  - name: ubuntu-12.04
   - name: ubuntu-14.04
   - name: ubuntu-16.04
 
 suites:
   - name: default
     run_list:
-    - apt::default
-    - smokeping::default
-    attributes:
-      smokeping:
-        admin_name: "Admin_Name"
-        admin_email: "ExampleAdminEmail@localhost"
-        alert_email: "ExampleAlertEmail@localhost"
+    - test::default
   - name: master
     run_list:
-    - apt::default
-    - smokeping::example_master
-    attributes:
-      smokeping:
-        master_mode: true
-        slave_secret: "read"
-        admin_name: "Admin_Name"
-        admin_email: "ExampleAdminEmail@localhost"
-        alert_email: "ExampleAlertEmail@localhost"
+    - test::example_master
   - name: slave
     run_list:
-    - apt::default
-    - smokeping::example_slave
-    attributes:
-      smokeping:
-        slave_mode: true
+    - test::example_slave
