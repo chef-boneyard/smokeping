@@ -34,8 +34,6 @@ action :create do
       notifies :restart, 'service[smokeping]', :delayed
     end
     Chef::Log.info "#{file} re-generated"
-
-    new_resource.updated_by_last_action(true)
   end
 end
 
@@ -45,6 +43,5 @@ action :delete do
     file = "#{node['smokeping']['etc_dir']}/#{name}.targets"
     ::File.delete(file) if ::File.exist?(file)
     Chef::Log.info "#{file} deleted"
-    new_resource.updated_by_last_action(true)
   end
 end
