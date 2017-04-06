@@ -1,5 +1,5 @@
-property :name, kind_of: String
-property :data, kind_of: Array, default: []
+property :name, String, name_property: true
+property :data, Array, default: []
 
 action :create do
   converge_by("Converging by #{new_resource.name}") do
