@@ -2,7 +2,7 @@ property :name, String, name_property: true
 property :data, Array, default: []
 
 action :create do
-  converge_by("Converging by #{new_resource.name}") do
+  converge_by("Create Smokeping target file for #{new_resource.name}") do
     name = new_resource.name
     etc_dir = node['smokeping']['etc_dir']
 
@@ -38,7 +38,7 @@ action :create do
 end
 
 action :delete do
-  converge_by("Converge by #{new_resource.name}") do
+  converge_by("Remove Smokeping target file for #{new_resource.name}") do
     name = new_resource.name
     file = "#{node['smokeping']['etc_dir']}/#{name}.targets"
     ::File.delete(file) if ::File.exist?(file)
