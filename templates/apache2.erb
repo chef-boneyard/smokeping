@@ -15,7 +15,7 @@
 
   Alias /smokeping /usr/share/smokeping/www
   <Directory "/usr/share/smokeping/www">
-      Options FollowSymLinks
+      Options +FollowSymLinks
   </Directory>
 
   <Location />
@@ -25,9 +25,8 @@
   ScriptAlias / /usr/lib/cgi-bin/
   <Directory "/usr/lib/cgi-bin">
     AllowOverride None
-    Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
-    Order allow,deny
-    Allow from all
+    Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+    Require all granted
   </Directory>
 
 </VirtualHost>
