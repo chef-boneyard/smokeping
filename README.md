@@ -16,7 +16,7 @@ fping <http://fping.org/>
 
 ### Chef
 
-- Chef 12.5+
+- Chef 12.7+
 
 ### Cookbooks
 
