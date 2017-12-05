@@ -1,4 +1,3 @@
-property :name, String, name_property: true
 property :data, Array, default: []
 
 action :create do
