@@ -2,6 +2,18 @@ smokeping Cookbook CHANGELOG
 ============================
 This file is used to list changes made in each version of the smokeping cookbook.
 
+## 3.1.0 (2017-12-05)
+
+- Test with Local Delivery instead of Rake
+- Update Apache license string in metadata
+- Remove kind_of from the custom resource
+- Remove the updated_by_last_action calls so we properly update the resource
+- Move the templates out of the default folder
+- Improve converge messages
+- Switch testing to inspec
+- Convert Apache 2.2 style config to Apache 2.4.
+- Require Chef 12.7 not 12.5
+
 ## 3.0.0 (2017-02-16)
 
 - Convert target LWRP to a custom resource
