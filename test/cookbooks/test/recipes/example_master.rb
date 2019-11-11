@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.normal['smokepling']['master_mode'] = true
-node.normal['smokepling']['slave_secret'] = 'read'
+node.override['smokepling']['master_mode'] = true
+node.override['smokepling']['slave_secret'] = 'read'
 
 apt_update 'update'
 

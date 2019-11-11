@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.normal['smokepling']['slave_mode'] = true
+node.override['smokepling']['slave_mode'] = true
 
 apt_update 'update'
 include_recipe 'smokeping::slave'
