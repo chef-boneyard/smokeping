@@ -14,4 +14,4 @@ end
 
 source_url 'https://github.com/chef-cookbooks/smokeping'
 issues_url 'https://github.com/chef-cookbooks/smokeping/issues'
-chef_version '>= 12.7' if respond_to?(:chef_version)
+chef_version '>= 12.15'
